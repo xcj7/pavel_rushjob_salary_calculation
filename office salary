@@ -1,0 +1,244 @@
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+ 
+
+namespace Job
+{
+    public class job:Rushjob
+    {
+        private int jobNumber;
+        private int jobHour;
+        private int jobPrice;
+        public int TotalPrice;
+        public string jobDescription;
+        public string customerName;
+        public int abc;
+
+ 
+
+        public string JobDescription
+        {
+            set => jobDescription = value;
+            get => jobDescription;
+        }
+        public string CustomerName
+        {
+            set => customerName = value;
+            get => customerName;
+        }
+
+ 
+
+        public int JobNumber
+    {
+        set => jobNumber = value;
+        get => jobNumber;
+    }
+    public int JobHour
+    {
+        set => jobHour = value;
+        get => jobHour;
+    }
+    public int JobPrice
+    {
+        set => jobPrice = value;
+        get => jobPrice;
+    }
+    public job()
+    {
+        
+    }
+        public job(string a,string b,int x, int y)
+        {
+            JobDescription = a;
+            CustomerName = b;
+            abc=x;
+            JobNumber = x + this.GetHashCode();
+            JobHour = y;
+            JobPrice = y * 45;
+            
+        }
+
+ 
+
+        public int Equal(job[] j)
+        {
+            int x = j.Length;
+            
+            int  y = 1;
+            for (int i = 0; i < x; i++)
+            {
+                for (int k = i+1; k < x+1; k++)
+            {
+              try{
+                if (j[i].abc == j[k].abc )
+                    {Console.WriteLine("Invalid Job Number..........");
+                        y=0;
+                        break;
+                    }
+              }
+                    catch(Exception)
+                    {
+
+                    }
+
+             
+                
+            }
+ 
+
+            }
+            //Console.WriteLine("Invalid Job Number..........");
+
+ 
+
+            return y;
+        }
+
+ 
+
+        public override int RjobPrice()
+        {
+            RushJobPrice = JobHour * base.RjobPrice();
+            return RushJobPrice;
+        }
+        public override string ToString()
+        {
+          Console.WriteLine(" .....................<<<<<<>>>>>......................");
+            return "Job Description: "+ JobDescription+"\n"+"Customer Name: "+ CustomerName+"\n"+ "Job Number: " + JobNumber + "\n" + "Job Hour: " + JobHour + "\n" +
+                "Total Job Price: "+ JobPrice+"\n"+"Total Rush Job Price: "+ RjobPrice();
+        }
+    }
+    /* public class JobDemo
+     {
+         static void Main(string[] args)
+         {
+             job j1 = new job("Tv repairing service","Adi",1, 3);
+             job j2 = new job("AC repairing service", "Tamim", 4, 5);
+             job j3 = new job("Electric Wire repairing service", "Shawon",2, 5);
+             job j4 = new job("Plumber repairing service", "Pavel",3, 5);
+             job j5 = new job("Furniture repairing service", "Rajib",6, 5);
+             Console.WriteLine(j1.ToString());
+             Console.WriteLine("..........");
+             Console.WriteLine(j2.ToString());
+
+ 
+
+         }
+     }*/
+
+ 
+
+    /* public class JobDemo2
+     {
+         public static void Main(string[] args)
+         {
+            // Console.WriteLine();
+             job[] jrr = new job[5];
+             jrr[0] = new job(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+             jrr[1] = new job(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+             jrr[2] = new job(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+             jrr[3] = new job(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+             jrr[4] = new job(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+
+ 
+
+             foreach (job j in jrr)
+             {
+                 Console.WriteLine(j.ToString());
+             }
+
+ 
+
+         }
+     }
+
+ 
+
+    public class Rushjob
+    {
+        public int rushjobprice;
+
+ 
+
+       public int RushJobPrice
+        {
+            set => rushjobprice = value;
+            get => rushjobprice;
+        }
+
+ 
+
+       
+        public virtual int RjobPrice()
+        {
+           RushJobPrice = 45 + 150;
+            return RushJobPrice;
+        }
+    }
+     public class JobDemo3
+ {
+     public static void Main(string[] args)
+     {  
+         job[] jrr = new job[5];
+         job a= new job();
+
+            Console.WriteLine("job number :\n");
+          int p2 = Convert.ToInt32(Console.ReadLine());
+          Console.WriteLine("job hour :\n");
+          int p3 = Convert.ToInt32(Console.ReadLine());
+          jrr[0] = new job("Tv repairing service","Adi",p2, p3);
+
+
+           Console.WriteLine("job number :\n");
+          int p4 = Convert.ToInt32(Console.ReadLine());
+          Console.WriteLine("job hour :\n");
+          int p5 = Convert.ToInt32(Console.ReadLine());
+         jrr[1] = new job("AC repairing service", "Tamim",p4, p5);
+
+
+          Console.WriteLine("job number :\n");
+          int p6 = Convert.ToInt32(Console.ReadLine());
+          Console.WriteLine("job hour :\n");
+          int p7 = Convert.ToInt32(Console.ReadLine());
+         jrr[2] = new job("Electric Wire repairing service", "Shawon",p6, p7);
+
+
+          Console.WriteLine("job number :\n");
+          int p8 = Convert.ToInt32(Console.ReadLine());
+          Console.WriteLine("job hour :\n");
+          int p9 = Convert.ToInt32(Console.ReadLine());
+         jrr[3] = new job("Plumber repairing service", "Pavel", p8, p9);
+
+
+
+          Console.WriteLine("job number :\n");
+          int p10 = Convert.ToInt32(Console.ReadLine());
+          Console.WriteLine("job hour :\n");
+          int p11 = Convert.ToInt32(Console.ReadLine());
+         jrr[4] = new job("Furniture repairing service", "Rajib",p10, p11);
+
+
+
+         
+
+ 
+if(a.Equal(jrr) == 1)
+{
+         foreach (job j in jrr)
+         {
+               
+                Console.WriteLine(j.ToString());
+         
+            }
+}
+
+ 
+
+     }
+ }
+}
